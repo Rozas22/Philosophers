@@ -6,7 +6,7 @@
 /*   By: ikrozas <ikrozas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 12:33:25 by ikrozas           #+#    #+#             */
-/*   Updated: 2026/03/23 12:40:52 by ikrozas          ###   ########.fr       */
+/*   Updated: 2026/03/24 15:04:50 by ikrozas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ typedef struct s_philo
     pthread_mutex_t *r_fork;
     t_data  *data;
 }   t_philo;
+
+
+int arg_is_num(char *str);
+int check_args(int argc, char **argv);
+int ft_atoi(const char *str);
+long long   get_time(void);
+int init_data(t_data *data, int argc, char **argv);
+int init_philos(t_philo *philos, t_data *data);
+void    *philo_routine(void *arg);
+int start_dinner(t_data *data, t_philo *philos);
 
 
 #endif
