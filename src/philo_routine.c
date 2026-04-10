@@ -6,17 +6,27 @@
 /*   By: ikrozas <ikrozas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:35:09 by ikrozas           #+#    #+#             */
-/*   Updated: 2026/03/24 15:04:33 by ikrozas          ###   ########.fr       */
+/*   Updated: 2026/04/10 13:23:45 by ikrozas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
 
-void    *philo_routine(void *arg)
+void	print_status(t_philo *philo, char *status)
 {
-    t_philo *philo;
+	long long	time;
+}
 
-    philo = (t_philo *)arg;
-    
-    return (NULL);
+void	*philo_routine(void *arg)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	if (philo->data->nb_philos == 1)
+		return (NULL);
+	while (1)
+	{
+		break ;
+	}
+	return (NULL);
 }
