@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -pthread
 SRC_DIR = src
 INC_DIR = Include
 OBJ_DIR = obj
-SRC_FILES = main.c check_args.c init.c monitor.c philo_routine.c \
+SRC_FILES = main.c check_args.c init.c monitor.c philo_routine.c clean.c \
 			start_dinner.c utils.c
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))

@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_dinner.c                                     :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikrozas <ikrozas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/24 13:35:11 by ikrozas           #+#    #+#             */
-/*   Updated: 2026/04/14 19:17:09 by ikrozas          ###   ########.fr       */
+/*   Created: 2026/04/14 18:47:50 by ikrozas           #+#    #+#             */
+/*   Updated: 2026/04/14 18:54:12 by ikrozas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Include/philosophers.h"
 
-int	start_dinner(t_data *data, t_philo *philos)
+void	clean_all(t_data *data, t_philo *philos)
 {
-	pthread_t	observer;
-	int					i;
+	int	i;
 
-	data->start_time = get_time();
 	i = 0;
 	while (i < data->nb_philos)
 	{
-		philos[i].last_meal = data->start_time;
-		if (pthread_create(&philos[i].thread, NULL, &philo_routine,
-				&philos[i]) != 0)
-			return (0);
+		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
-	if (pthread_create(&observer, NULL, &monitor_routine, philos) != 0)
-		return (0);
-	i = 0;
-	while (i < data->nb_philos)
-	{
-		pthread_join(philos[i].thread, NULL);
-		i++;
-	}
-	pthread_join(observer, NULL);
-	return (1);
+	pthread_mutex_destroy(&data->write_lock);
+	pthread_mutex_destroy(&data->dead_lock);
+	pthread_mutex_destroy(&data->meal_lock);
+	if (data->forks)
+		free(data->forks);
+	if (philos)
+		free(philos);
 }

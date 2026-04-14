@@ -6,7 +6,7 @@
 /*   By: ikrozas <ikrozas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:17:18 by ikrozas           #+#    #+#             */
-/*   Updated: 2026/04/10 13:26:04 by ikrozas          ###   ########.fr       */
+/*   Updated: 2026/04/14 17:53:14 by ikrozas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,17 @@ long long	get_time(void)
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}
+
+void		ft_usleep(size_t milliseconds, t_data *data)
+{
+	long long	start_time;
+	
+	start_time = get_time();
+	while ((get_time() - start_time) < (long long)milliseconds)
+	{
+		if (is_dead(data))
+			break;
+		usleep(500);
+	}
 }

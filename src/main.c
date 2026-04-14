@@ -6,7 +6,7 @@
 /*   By: ikrozas <ikrozas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 13:03:13 by ikrozas           #+#    #+#             */
-/*   Updated: 2026/04/10 13:21:40 by ikrozas          ###   ########.fr       */
+/*   Updated: 2026/04/14 18:57:26 by ikrozas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ int	main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 	{
-		printf("Usa: ./philo nb_philo t_die t_eat t_sleep [nb_meals]\n");
+		printf("Use: ./philo nb_philo t_die t_eat t_sleep [nb_meals]\n");
 		return (1);
 	}
 	if (!check_args(argc, argv))
 	{
-		printf("Error: Argumentos invalidos\n");
+		printf("Error: Invalids Arguments\n");
 		return (1);
 	}
 	if (!init_data(&data, argc, argv))
 	{
-		printf("Error: Fallo en la inicializacion de datos\n");
+		printf("Error: Data inizalization failure\n");
 		return (1);
 	}
 	philos = malloc(sizeof(t_philo) * data.nb_philos);
 	if (!philos)
-	{
-		return (1);
-	}
+		return (clean_all(&data, NULL), 1);
 	init_philos(philos, &data);
+	start_dinner(&data, philos);
+	clean_all(&data, philos);
 	return (0);
 }
