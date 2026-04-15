@@ -6,7 +6,7 @@
 /*   By: ikrozas <ikrozas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:35:09 by ikrozas           #+#    #+#             */
-/*   Updated: 2026/04/14 20:50:05 by ikrozas          ###   ########.fr       */
+/*   Updated: 2026/04/15 14:42:46 by ikrozas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_status(t_philo *philo, char *status)
 	if (!is_dead(philo->data))
 	{
 		time = get_time() - philo->data->start_time;
-		printf("%lld %d %s\n", time, philo->id, status);	
+		printf("%lld %d %s\n", time, philo->id, status);
 	}
 	pthread_mutex_unlock(&philo->data->write_lock);
 }
@@ -65,7 +65,7 @@ void	*philo_routine(void *arg)
 			break ;
 		print_status(philo, "is thinking");
 		if (philo->id % 2 == 0)
-		ft_usleep(philo->data->time_to_eat / 2, philo->data);
+			ft_usleep(philo->data->time_to_eat / 2, philo->data);
 	}
 	return (NULL);
 }

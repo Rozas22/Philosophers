@@ -6,7 +6,7 @@
 /*   By: ikrozas <ikrozas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 13:35:11 by ikrozas           #+#    #+#             */
-/*   Updated: 2026/04/14 19:17:09 by ikrozas          ###   ########.fr       */
+/*   Updated: 2026/04/15 14:43:09 by ikrozas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	start_dinner(t_data *data, t_philo *philos)
 {
 	pthread_t	observer;
-	int					i;
+	int			i;
 
 	data->start_time = get_time();
 	i = 0;
